@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import queryTools.QueriesRealisation;
 
-public class TestConnection {
+public class DBTests {
 
 	public static void main(String[] args) throws ClassNotFoundException,
 		SQLException, InterruptedException{

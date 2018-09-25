@@ -1,13 +1,13 @@
 package queryTools;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class QueriesRealisation implements Queries {
-
+	Statement statement = null;
+	
 	/**Need to change this method
 	 * make it more simple.
 	 * Branch "delete_shapes" need to be useful insert only start_date
@@ -15,7 +15,7 @@ public class QueriesRealisation implements Queries {
 	 */
 	@Override
 	public void add(Connection con, String[] str) {
-		Statement statement = null;
+		
 		if ("add_item".equals(str[0])) {
 			try {
 				String quary = String.format("INSERT INTO ITEMS "
@@ -78,7 +78,6 @@ public class QueriesRealisation implements Queries {
 		String s1 = null;
 		String s2 = null;
 		String query = null;
-		Statement statement = null;
 		
 		if ("delete_item".equals(str[0])) {
 			s1 = "ITEMS";
@@ -116,7 +115,6 @@ public class QueriesRealisation implements Queries {
 		String label = null;
 		String s1 = null;
 		String sql = null;
-		Statement statement = null;
 		ResultSet rs = null;
 		
 		if ("show_items".equals(table)) {
