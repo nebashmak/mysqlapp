@@ -1,4 +1,4 @@
-package dbinfo;
+package tests;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,25 +21,19 @@ public class TestConnection {
 		
 		Connection	con = null;
 		
-			try {
-				con = DriverManager.getConnection(url, userName, password);				
-				System.out.println("connected");
-				String[] str = new String[5];
-				str[0] = "add_shipping";
-				str[1] = "54";
-				str[2] = "1";
-				str[3] = "2002-12-12";
-				str[4] = "";
-				QueriesRealisation qr = new QueriesRealisation();
-				qr.add(con, str);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				System.out.println("cant connect to db");
-				e.printStackTrace();
-			} finally {
-				if (con != null) con.close();
-				
-				System.out.println("db disconnected");
-			}		
+		try {
+			con = DriverManager.getConnection(url, userName, password);				
+			System.out.println("connected");
+			String str = "show_shippings";
+			
+			QueriesRealisation qr = new QueriesRealisation();
+			qr.show(con, str);
+		} catch (SQLException e) {
+			System.out.println("cant connect to db");
+			e.printStackTrace();
+		} finally {
+			if (con != null) con.close();				
+			System.out.println("db disconnected");
+		}
 	}
 }
