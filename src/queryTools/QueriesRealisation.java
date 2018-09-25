@@ -102,7 +102,7 @@ public class QueriesRealisation implements Queries {
 			e.printStackTrace();
 		} finally {
 			try {
-				statement.close();
+				if(statement != null) statement.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
