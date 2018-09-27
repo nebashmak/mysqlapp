@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  *	NEED TO FINISH ADDPARSE!
  */
 public class Parser implements CommandsParser {
-	private String addRegex = "";
+	private String addRegex = "^add_(item|town|shipping) +(\\%[0-9a-zA-Z_\\-]+\\% *){2,4}$";
 	private String deleteRegex = "^delete_(item|town|shipping) +\\%[0-9]+\\%$";
 	private String showRegex = "^show_(items|towns|shippings)$";
 	private Matcher matcher = null;
@@ -32,7 +32,8 @@ public class Parser implements CommandsParser {
 		if	(flag) return commands;
 		deleteParse();
 		if	(flag) return commands;
-		
+		addParse();
+		if	(flag) return commands;
 		return commands;
 	}
 	
@@ -56,10 +57,14 @@ public class Parser implements CommandsParser {
 		}
 	}
 	
-	// need to finish this next time
 	private void addParse() {
-		
-	}
-	
+		pattern = Pattern.compile(addRegex);
+		matcher = pattern.matcher(str);
+		if (matcher.find()) {
+			str = str.replaceAll("%", " ");
+			commands = str.split("\\s+");
+			flag = true;
+		}
+	}	
 	
 }

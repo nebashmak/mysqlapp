@@ -43,7 +43,41 @@ public class ParserTests {
 		System.out.println("incorrects:");
 		System.out.println(error4);
 		System.out.println(error5);
-		System.out.println(error6);
+		System.out.println(error6);		
+		
+		String add_item = Arrays.toString(
+				parser.parse(" add_item  %item_name%  %quantity% "));
+		String add_town = Arrays.toString(
+				parser.parse("add_town %town_name% %distance%"));
+		String add_shipping = Arrays
+				.toString(parser
+				.parse("add_shipping %item_id% %town_ad% %start_date% %end_date%"));
+		String add_shipping2 = Arrays
+				.toString(parser
+						.parse("add_shipping %item_id%%town_ad%%start_date%%end_date%"));
+		
+		System.out.println("corrects:");
+		System.out.println(add_item);
+		System.out.println(add_town);
+		System.out.println(add_shipping);
+		System.out.println(add_shipping2);
+		
+		String error7 = Arrays.toString(
+				parser.parse("add_item %item_name% quantity%"));
+		String error8 = Arrays.toString(
+				parser.parse("add_town %% %distance%"));
+		String error9 = Arrays
+				.toString(parser
+				.parse("add_shipp %item_id% %town_ad% %start_date% %end_date%"));
+		String error10 = Arrays
+				.toString(parser
+						.parse("add_shipping %item_id%end_date%"));
+		
+		System.out.println("incorrects:");
+		System.out.println(error7);
+		System.out.println(error8);
+		System.out.println(error9);	
+		System.out.println(error10);	
 	}
 
 }
