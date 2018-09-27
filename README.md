@@ -1,5 +1,4 @@
 # mysqlapp
-supplies db app
 My first app on java. It can be used to connect with mysql on computer
 and do next commands:
 - add_item %ITEM_NAME% %QUANITY%
