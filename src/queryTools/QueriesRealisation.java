@@ -109,26 +109,25 @@ public class QueriesRealisation implements Queries {
 	}
 
 	@Override
-	public void show(Connection con, String table) {
-		//String pattern = "SELECT * FROM %s;";
-		String pattern = "SELECT * FROM SHIPPINGS;";
+	public void show(Connection con, String[] table) {
+		String pattern = "SELECT * FROM %s;";
 		String label = null;
 		String s1 = null;
 		String sql = null;
 		ResultSet rs = null;
 		
-		if ("show_items".equals(table)) {
+		if ("show_items".equals(table[0])) {
 			s1 = "ITEMS";
 			label = "item_id  item_name            quantity\n"
-					+ "----------------------------------------";
-		} else if ("show_towns".equals(table)) {
+					+ "--------------------------------------";
+		} else if ("show_towns".equals(table[0])) {
 			s1 = "TOWNS";
 			label = "town_id  town_name            distance\n"
-					+ "----------------------------------------";
-		} else if ("show_shippings".equals(table)) {
+					+ "--------------------------------------";
+		} else if ("show_shippings".equals(table[0])) {
 			s1 = "SHIPPINGS";
 			label = "ship_ip  item_id  town_id  start_date   end_date\n"
-					+ "---------------------------------------------------";
+					+ "--------------------------------------------------";
 			try {
 				statement = con.createStatement();
 				sql = String.format(pattern, s1);
@@ -139,7 +138,7 @@ public class QueriesRealisation implements Queries {
 					int item_id = rs.getInt(2);
 					int town_id = rs.getInt(3);
 					String startd = rs.getDate(4).toString();
-					String endd= rs.getDate(5).toString();
+					String endd = rs.getDate(5).toString();
 					
 					System.out.printf("%-8d %-8d %-8d %-12s %-12s%n",
 							id, item_id, town_id, startd, endd);
@@ -179,6 +178,5 @@ public class QueriesRealisation implements Queries {
 				e.printStackTrace();
 			}
 		}
-	}
-	
+	}	
 }

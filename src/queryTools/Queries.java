@@ -7,5 +7,5 @@ public interface Queries {
 	
 	void delete(Connection con, String[] str);
 	
-	void show(Connection con, String table);
+	void show(Connection con, String[] table);
 }

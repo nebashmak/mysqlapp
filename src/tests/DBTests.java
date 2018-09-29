@@ -19,7 +19,7 @@ public class DBTests {
 		
 		//Class.forName("com.mysql.cj.jdbc.Driver");
 		
-		Connection	con = null;
+		Connection con = null;
 		
 		try {
 			con = DriverManager.getConnection(url, userName, password);				
@@ -27,7 +27,7 @@ public class DBTests {
 			String str = "show_shippings";
 			
 			QueriesRealisation qr = new QueriesRealisation();
-			qr.show(con, str);
+			//qr.show(con, str);
 		} catch (SQLException e) {
 			System.out.println("cant connect to db");
 			e.printStackTrace();

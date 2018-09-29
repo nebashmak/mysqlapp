@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
  * @author Evgeny
  *	This class objects parse strings to string arrays that can be used for 
  *	send queries mysql db
- *
- *	NEED TO FINISH ADDPARSE!
  */
 public class Parser implements CommandsParser {
 	private String addRegex = "^add_(item|town|shipping) +(\\%[0-9a-zA-Z_\\-]+\\% *){2,4}$";
